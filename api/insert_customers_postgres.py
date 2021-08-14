@@ -1,21 +1,21 @@
 import os
 import time
 import argparse
-import pandas as pd
-import numpy as np
-from faker import Faker
+import pandas   as pd
+import numpy    as np
+from faker      import Faker
 from sqlalchemy import create_engine
-from datetime import datetime
-from dotenv import load_dotenv
+from datetime   import datetime
+from dotenv     import load_dotenv
 
 load_dotenv()
 
 username = os.environ.get("POSTGRES_DATABASE_USER")
 password = os.environ.get("POSTGRES_PASSWORD")
-host = os.environ.get("POSTGRES_HOST")
-port = os.environ.get("POSTGRES_PORT")
+host     = os.environ.get("POSTGRES_HOST")
+port     = os.environ.get("POSTGRES_PORT")
 database = os.environ.get("POSTGRES_DATABASE")
-table = os.environ.get("POSTGRES_TABLE")
+table    = os.environ.get("POSTGRES_TABLE")
 
 # função para parsear a saída do parâmetro SILENT
 def str2bool(v):

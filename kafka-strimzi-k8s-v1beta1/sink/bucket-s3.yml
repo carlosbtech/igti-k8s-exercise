@@ -12,8 +12,8 @@ spec:
     value.converter: "org.apache.kafka.connect.json.JsonConverter"
     key.converter.schemas.enable: "false"
     value.converter.schemas.enable: "false"
-    topics: "src-postgres-customers-json"
-    s3.bucket.name: "datalake-igti-carlos"
+    topics: "topicName"
+    s3.bucket.name: "bucketName"
     s3.region: us-east-2
     flush.size: 30000
     format.class: "io.confluent.connect.s3.format.json.JsonFormat"

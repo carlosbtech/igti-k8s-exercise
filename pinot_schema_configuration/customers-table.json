@@ -1,5 +1,5 @@
 {
-    "tableName": "customers",
+    "tableName": "TableName",
     "tableType": "REALTIME",
     "segmentsConfig": {
       "timeColumnName": "dt_update",
@@ -14,7 +14,7 @@
       "streamConfigs": {
         "streamType": "kafka",
         "stream.kafka.consumer.type": "lowlevel",
-        "stream.kafka.topic.name": "output-ksqldb-stream-customers-json",
+        "stream.kafka.topic.name": "TopicName",
         "stream.kafka.decoder.class.name": "org.apache.pinot.plugin.stream.kafka.KafkaJSONMessageDecoder",
         "stream.kafka.consumer.factory.class.name": "org.apache.pinot.plugin.stream.kafka20.KafkaConsumerFactory",
         "stream.kafka.broker.list": "PLAINTEXT://igtiedh-kafka-brokers.ingestion.svc.Cluster.local:9092",
