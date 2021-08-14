@@ -1,0 +1,31 @@
+{
+    "schemaName": "sch_kafka_customers_json",
+    "dimensionFieldSpecs": [
+      {
+        "name": "id",
+        "dataType": "INT"
+      },
+      {
+        "name": "nome",
+        "dataType": "STRING"
+      },
+      {
+        "name": "sexo",
+        "dataType": "STRING"
+      },
+      {
+        "name": "endereco",
+        "dataType": "STRING"
+      },
+      {
+        "name": "telefone",
+        "dataType": "STRING"
+      }
+    ],
+    "dateTimeFieldSpecs": [{
+      "name": "dt_update",
+      "dataType": "LONG",
+      "format" : "1:MILLISECONDS:EPOCH",
+      "granularity": "1:MILLISECONDS"
+    }]
+  }

@@ -1,0 +1,29 @@
+apiVersion: kafka.strimzi.io/v1alpha1
+kind: KafkaConnector
+metadata:
+  name: s3-sink-connector-igtiedh-kuqo555
+  labels:
+    strimzi.io/cluster: igtiedh
+spec:
+  class: io.confluent.connect.s3.S3SinkConnector
+  tasksMax: 3
+  config:
+    key.converter: "org.apache.kafka.connect.storage.StringConverter"
+    value.converter: "org.apache.kafka.connect.json.JsonConverter"
+    key.converter.schemas.enable: "false"
+    value.converter.schemas.enable: "false"
+    topics: "src-postgres-customers-json"
+    s3.bucket.name: "datalake-igti-carlos"
+    s3.region: us-east-2
+    flush.size: 30000
+    format.class: "io.confluent.connect.s3.format.json.JsonFormat"
+    schema.generator.class: "io.confluent.connect.storage.hive.schema.DefaultSchemaGenerator"
+    partitioner.class: "io.confluent.connect.storage.partitioner.HourlyPartitioner"
+    storage.class: "io.confluent.connect.s3.storage.S3Storage"
+    topics.dir: "landing-zone/kafka_events"
+    aws.access.key.id: ""
+    aws.secret.access.key: ""
+    path.format: "'year'=YYYY/'month'=MM/'day'=DD/'hour'=HH"
+    locale: "pt_BR"
+    timezone: "America/Sao_Paulo"
+    partition.duration.ms: 3600000

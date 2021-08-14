@@ -1,0 +1,35 @@
+apiVersion: kafka.strimzi.io/v1alpha1
+kind: "KafkaConnector"
+metadata:
+  # connector name
+  name: "ingest-src-postgresql-customers-json-3200e849928721"
+  labels:
+    # kafka connect [cluster] name
+    strimzi.io/cluster: igtiedh
+spec:
+  class: io.confluent.connect.jdbc.JdbcSourceConnector
+  tasksMax: 3
+  config:
+    key.converter: org.apache.kafka.connect.json.JsonConverter
+    value.converter: org.apache.kafka.connect.json.JsonConverter
+    key.converter.schemas.enable: true
+    value.converter.schemas.enable: true
+    connection.url: "jdbc:postgresql://host:port/database"
+    connection.user: "postgres"
+    connection.password: ""
+    connection.attempts: "2"
+    query: "SELECT * FROM public.customers"
+    mode: "incrementing"
+    topic.prefix: "src-postgres-customers-json"
+    incrementing.column.name: "id"
+    validate.non.null: "false"
+    transforms: "createKey,extractInt,InsertTopic,InsertSourceDetails"
+    transforms.createKey.type: "org.apache.kafka.connect.transforms.ValueToKey"
+    transforms.createKey.fields: "id"
+    transforms.extractInt.type: "org.apache.kafka.connect.transforms.ExtractField$Key"
+    transforms.extractInt.field: "id"
+    transforms.InsertTopic.type: "org.apache.kafka.connect.transforms.InsertField$Value"
+    transforms.InsertTopic.topic.field: "messagetopic"
+    transforms.InsertSourceDetails.type: "org.apache.kafka.connect.transforms.InsertField$Value"
+    transforms.InsertSourceDetails.static.field: "messagesource"
+    transforms.InsertSourceDetails.static.value: "postgresql"

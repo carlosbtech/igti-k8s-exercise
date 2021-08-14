@@ -1,0 +1,42 @@
+apiVersion: kafka.strimzi.io/v1beta1
+kind: Kafka
+metadata:
+  name: igtiedh
+  namespace: ingestion
+spec:
+  kafka:
+    # broker version
+    version: 2.7.0
+    # initial replicas
+    replicas: 1
+    # provision lbs
+    listeners:
+      plain: {}
+      tls: {}
+      external:
+        type: loadbalancer
+        tls: false
+      readinessProbe:
+        initialDelaySeconds: 15
+        timeoutSeconds: 5
+      livenessProbe:
+        initialDelaySeconds: 15
+        timeoutSeconds: 5
+    config:
+      default.replication.factor: 1
+      num.partitions: 9
+      offsets.topic.replication.factor: 1
+      transaction.state.log.replication.factor: 1
+      transaction.state.log.min.isr: 1
+      log.message.format.version: "2.7"
+      inter.broker.protocol.version: "2.7"
+      log.retention.hours: 24
+    storage:
+      type: ephemeral
+  zookeeper:
+    replicas: 3
+    storage:
+      type: ephemeral
+  entityOperator:
+    topicOperator: {}
+    userOperator: {}
