@@ -1,7 +1,7 @@
 apiVersion: kafka.strimzi.io/v1alpha1
 kind: KafkaConnector
 metadata:
-  name: s3-sink-connector-igtiedh-kuqo555
+  name: s3-sink-connector-igtiedh-kuqo17
   labels:
     strimzi.io/cluster: igtiedh
 spec:
@@ -12,8 +12,8 @@ spec:
     value.converter: "org.apache.kafka.connect.json.JsonConverter"
     key.converter.schemas.enable: "false"
     value.converter.schemas.enable: "false"
-    topics: "topicName"
-    s3.bucket.name: "bucketName"
+    topics: ""
+    s3.bucket.name: ""
     s3.region: us-east-2
     flush.size: 30000
     format.class: "io.confluent.connect.s3.format.json.JsonFormat"
@@ -26,4 +26,4 @@ spec:
     path.format: "'year'=YYYY/'month'=MM/'day'=DD/'hour'=HH"
     locale: "pt_BR"
     timezone: "America/Sao_Paulo"
-    partition.duration.ms: 3600000
+    partition.duration.ms: 4600000

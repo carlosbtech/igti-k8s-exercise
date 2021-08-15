@@ -11,7 +11,7 @@ spec:
   version: 2.7.0
   replicas: 1
   bootstrapServers: igtiedh-kafka-bootstrap:9093
-  image: 127012818163.dkr.ecr.us-east-2.amazonaws.com/igti-repository:latest
+  image: 
   imagePullPolicy: Always
   tls:
     trustedCertificates:

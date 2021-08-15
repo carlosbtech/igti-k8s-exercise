@@ -25,4 +25,4 @@ sleep 2
 open http://localhost:9000
 # Just for blocking
 tail -f /dev/null
-pkill -f "kubectl port-forward service/pinot-controller 9000:9000 -n pinot-quickstart"
+pkill -f "kubectl port-forward service/pinot-controller 9000:9000 -n datastorage"
